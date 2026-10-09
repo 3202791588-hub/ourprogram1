@@ -1,0 +1,40 @@
+<view class="home-page">
+  <image class="home-scene" src="/assets/home/tree-gateway.jpg" mode="aspectFill" />
+  <view class="mist-scrim"></view>
+
+  <view class="home-nav" style="padding-top:{{navTop}}px">
+    <view class="brand-mark">月森</view>
+    <view class="demo-switcher">
+      <text class="demo-label">体验</text>
+      <view class="user-pill {{user === 'user_a' ? 'active' : ''}}" data-user="user_a" bindtap="switchUser">A</view>
+      <view class="user-pill {{user === 'user_b' ? 'active' : ''}}" data-user="user_b" bindtap="switchUser">B</view>
+    </view>
+  </view>
+
+  <view class="home-content">
+    <view class="hero-copy">
+      <view class="hero-title">月森关系地图</view>
+      <view class="hero-description">24 个真实的相处瞬间，看看你怎样靠近一个人，又希望怎样被回应。</view>
+    </view>
+
+    <view wx:if="{{loading}}" class="home-state">
+      <view class="moon-loader"></view>
+      <text>正在点亮月森入口…</text>
+    </view>
+
+    <view wx:elif="{{error}}" class="home-state error-state">
+      <text>{{error}}</text>
+      <button class="journey-button retry-button" bindtap="retry">重新连接</button>
+    </view>
+
+    <view wx:else class="journey-actions">
+      <button class="journey-button" bindtap="start">
+        <text>走进月森</text><text class="button-arrow">›</text>
+      </button>
+      <button class="history-button" bindtap="history">翻看过去的旅程</button>
+    </view>
+
+    <view class="journey-meta">24 个相处瞬间 · 约 4 分钟</view>
+    <view class="gentle-note">娱乐化关系倾向探索 · 不构成心理诊断</view>
+  </view>
+</view>

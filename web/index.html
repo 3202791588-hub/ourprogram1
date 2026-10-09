@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="隐藏人格测试与好友关系分析 Demo">
+  <title>隐格 · 隐藏人格测试</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <button class="brand" data-action="home" aria-label="返回首页">
+      <span class="brand-mark">隐</span>
+      <span><strong>隐格</strong><small>PERSONALITY LAB</small></span>
+    </button>
+    <div class="top-actions">
+      <button class="text-button" data-action="history">我的记录</button>
+      <div class="user-switch" aria-label="切换模拟用户">
+        <button data-user="user_a">用户 A</button>
+        <button data-user="user_b">用户 B</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="app" class="app-shell" aria-live="polite"></main>
+
+  <footer>
+    <span>娱乐化人格探索 · 非心理或医疗诊断</span>
+    <button class="text-button" data-action="privacy">隐私与数据</button>
+  </footer>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>

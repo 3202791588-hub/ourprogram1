@@ -1,0 +1,1 @@
+import{request}from"./http";export const track=(event_name:string,properties:object={},session_id?:number)=>request("/events","POST",{event_name,properties,...(session_id?{session_id}:{})}).catch(()=>undefined)

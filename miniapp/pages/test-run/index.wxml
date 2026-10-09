@@ -1,0 +1,103 @@
+<view class="journey-page {{sceneFailed ? 'scene-fallback' : ''}}">
+  <image wx:if="{{sceneAsset && !sceneFailed}}" class="scene-image" src="{{sceneAsset}}" mode="aspectFill" bindload="sceneLoaded" binderror="sceneError" />
+  <image wx:if="{{nextSceneAsset}}" class="scene-preload" src="{{nextSceneAsset}}" mode="aspectFill" />
+  <view class="paper-wash"></view>
+
+  <view wx:if="{{loading}}" class="state-panel">正在走进月森…</view>
+  <view wx:elif="{{error}}" class="state-panel error-panel">
+    <view>{{error}}</view>
+    <button class="retry-button" bindtap="load">重新尝试</button>
+  </view>
+
+  <block wx:else>
+    <view class="top-safe" style="padding-top:{{navTop}}px">
+      <view class="journey-nav">
+        <view class="back-button" bindtap="back" aria-label="返回">‹</view>
+        <view class="chapter-name">{{currentQuestion.chapter}}</view>
+        <view class="question-count">{{index + 1}} / {{questions.length}}</view>
+      </view>
+      <view class="moon-progress">
+        <view class="moon-progress-inner" style="width:{{answeredCount * 100 / questions.length}}%"></view>
+      </view>
+    </view>
+
+    <scroll-view scroll-y class="question-scroll" enhanced show-scrollbar="{{false}}">
+      <view class="scene-spacer"></view>
+      <view class="question-stage {{completing ? 'completing' : ''}} {{entering ? 'entering' : ''}}">
+        <view class="story-kicker">Q{{index + 1 < 10 ? '0' : ''}}{{index + 1}} · {{currentQuestion.displayTitle}}</view>
+        <view class="story-question">{{currentQuestion.content}}</view>
+
+        <view class="branch-list {{currentQuestion.layout}}">
+          <view
+            wx:for="{{currentQuestion.options}}"
+            wx:key="id"
+            wx:for-index="optionIndex"
+            class="path-option path-{{optionIndex}} {{answers[currentQuestion.id] === item.id ? 'selected' : ''}} {{saving ? 'locked' : ''}}"
+            data-question-id="{{currentQuestion.id}}"
+            data-option-id="{{item.id}}"
+            catchtap="choose"
+          >
+            <view class="branch-line"></view>
+            <view class="path-dot"></view>
+            <view class="option-copy">{{item.content}}</view>
+            <view wx:if="{{answers[currentQuestion.id] === item.id}}" class="selected-trail">
+              <text>•</text><text>•</text><text>•</text><text>✓</text>
+            </view>
+          </view>
+        </view>
+
+        <view wx:if="{{completing}}" class="answer-confirm">这条小路已经记下</view>
+
+        <view class="page-actions">
+          <button class="previous-button" bindtap="prev" disabled="{{index === 0 || saving || submitting}}">上一段路</button>
+          <button
+            wx:if="{{index === questions.length - 1}}"
+            class="submit-button"
+            bindtap="submit"
+            loading="{{submitting}}"
+            disabled="{{saving || completing || submitting || answeredCount !== questions.length}}"
+          >{{submitting ? '正在生成结果…' : '走向我的结果'}}</button>
+        </view>
+        <view class="save-tip">{{saving ? '正在保存这一步…' : '答案已保存，可以随时回来继续。'}}</view>
+      </view>
+    </scroll-view>
+  </block>
+
+  <view wx:if="{{submitting}}" class="result-transition">
+    <view class="transition-moon"><view></view></view>
+    <view class="transition-title">正在折叠你的月森地图</view>
+    <view class="transition-copy">让走过的 24 条小路，慢慢汇成一个轮廓</view>
+  </view>
+
+  <!--
+    The scene used by the page is selected from API metadata, so WeChat's
+    unused-file analyzer cannot infer the asset dependency. This false runtime
+    branch gives the packager literal references without decoding all 24 images.
+  -->
+  <block wx:if="{{assetPackProbe}}">
+    <image src="/assets/questions/q01/scene.jpg" />
+    <image src="/assets/questions/q02/scene.jpg" />
+    <image src="/assets/questions/q03/scene.jpg" />
+    <image src="/assets/questions/q04/scene.jpg" />
+    <image src="/assets/questions/q05/scene.jpg" />
+    <image src="/assets/questions/q06/scene.jpg" />
+    <image src="/assets/questions/q07/scene.jpg" />
+    <image src="/assets/questions/q08/scene.jpg" />
+    <image src="/assets/questions/q09/scene.jpg" />
+    <image src="/assets/questions/q10/scene.jpg" />
+    <image src="/assets/questions/q11/scene.jpg" />
+    <image src="/assets/questions/q12/scene.jpg" />
+    <image src="/assets/questions/q13/scene.jpg" />
+    <image src="/assets/questions/q14/scene.jpg" />
+    <image src="/assets/questions/q15/scene.jpg" />
+    <image src="/assets/questions/q16/scene.jpg" />
+    <image src="/assets/questions/q17/scene.jpg" />
+    <image src="/assets/questions/q18/scene.jpg" />
+    <image src="/assets/questions/q19/scene.jpg" />
+    <image src="/assets/questions/q20/scene.jpg" />
+    <image src="/assets/questions/q21/scene.jpg" />
+    <image src="/assets/questions/q22/scene.jpg" />
+    <image src="/assets/questions/q23/scene.jpg" />
+    <image src="/assets/questions/q24/scene.jpg" />
+  </block>
+</view>

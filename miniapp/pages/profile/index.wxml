@@ -1,0 +1,1 @@
+<view class="page"><view class="card"><view class="title">隐私与数据</view><view class="subtitle">Demo 不收集手机号、定位、通讯录或敏感健康信息。</view><button class="btn ghost" bindtap="deleteData">删除我的测试数据</button><view>{{message}}</view></view></view>

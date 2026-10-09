@@ -1,0 +1,71 @@
+<view class="result-page {{decor.tone}}">
+  <image class="result-scene" src="/assets/questions/q24/scene.jpg" mode="aspectFill" />
+  <view class="result-wash"></view>
+  <view class="result-nav" style="padding-top:{{navTop}}px">
+    <view class="nav-button" bindtap="home">⌂</view>
+    <view class="nav-title">月森原型</view>
+    <view class="nav-star">✦</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="result-state">
+    <view class="orbit-loader"><view></view></view>
+    <view class="state-title">月光正在描出你的轮廓</view>
+    <view class="state-copy">把 24 段旅程慢慢折成一张地图…</view>
+  </view>
+
+  <view wx:elif="{{error}}" class="result-state error-state">
+    <view class="state-title">结果暂时藏进了雾里</view>
+    <view class="state-copy">{{error}}</view>
+    <button class="primary-button" bindtap="load">再找一次</button>
+  </view>
+
+  <scroll-view wx:else scroll-y class="result-scroll" enhanced show-scrollbar="{{false}}">
+    <view class="result-spacer"></view>
+    <view class="result-sheet">
+      <view class="animal-seal">
+        <view class="seal-orbit orbit-one"></view>
+        <view class="seal-orbit orbit-two"></view>
+        <view class="animal-glyph">{{decor.glyph}}</view>
+      </view>
+
+      <view class="result-kicker">YOUR MOON FOREST ARCHETYPE</view>
+      <view class="result-label">你在月森遇见了</view>
+      <view class="result-name">{{result.name}}</view>
+      <view class="result-caption">“{{decor.caption}}”</view>
+
+      <view class="tag-row">
+        <view wx:for="{{result.tags}}" wx:key="*this" class="result-tag">{{item}}</view>
+      </view>
+
+      <view class="summary-card">
+        <view class="quote-mark">“</view>
+        <view>{{result.summary}}</view>
+      </view>
+
+      <view class="section-heading">
+        <view class="section-star">✦</view>
+        <view><text>你的相处光谱</text><text class="section-note">不是分数高低，而是你更常走的路</text></view>
+      </view>
+
+      <view class="score-card">
+        <view wx:for="{{scores}}" wx:key="key" class="score-item">
+          <view class="score-head">
+            <view><text class="score-label">{{item.label}}</text><text class="score-hint">{{item.hint}}</text></view>
+            <text class="score-value">{{item.value}}</text>
+          </view>
+          <view class="score-track"><view class="score-fill" style="width:{{item.value}}%"></view><view class="score-moon" style="left:{{item.value}}%">●</view></view>
+        </view>
+      </view>
+
+      <view class="mock-note">当前为稳定可替换的 Demo Engine 输出，不是正式人格算法，也不构成心理诊断。</view>
+
+      <button class="primary-button" bindtap="full"><text>展开完整月森手记</text><text>→</text></button>
+      <view class="secondary-actions">
+        <button class="soft-button" bindtap="inviteFriend">邀请 TA 同行</button>
+        <button class="soft-button" open-type="share">分享我的原型</button>
+      </view>
+      <view wx:if="{{invite}}" class="invite-note">邀请口令已经复制，等 TA 从另一条路走来。</view>
+      <view class="bottom-space"></view>
+    </view>
+  </scroll-view>
+</view>

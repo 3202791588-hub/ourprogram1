@@ -1,0 +1,27 @@
+page{background:#17231f}
+.home-page{position:relative;width:100vw;min-height:100vh;overflow:hidden;color:#24342c}
+.home-scene{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.mist-scrim{position:absolute;left:0;right:0;bottom:0;height:58%;z-index:1;background:linear-gradient(180deg,rgba(229,229,211,0) 0%,rgba(229,229,211,.04) 16%,rgba(229,229,211,.1) 34%,rgba(229,229,211,.16) 62%,rgba(229,229,211,.2) 100%);pointer-events:none}
+.home-nav{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;padding-left:40rpx;padding-right:40rpx}
+.brand-mark{color:#e7d7ae;font-family:"Songti SC","STSong",serif;font-size:29rpx;font-weight:600;letter-spacing:10rpx;text-shadow:0 3rpx 16rpx rgba(10,18,15,.75)}
+.demo-switcher{display:flex;align-items:center;gap:10rpx;padding:7rpx 10rpx 7rpx 16rpx;border-radius:999rpx;background:rgba(19,31,26,.3);color:rgba(244,238,218,.82)}
+.demo-label{margin-right:2rpx;font-size:18rpx;letter-spacing:2rpx}
+.user-pill{width:38rpx;height:38rpx;display:flex;align-items:center;justify-content:center;border-radius:50%;color:rgba(244,238,218,.72);font-size:19rpx}
+.user-pill.active{background:rgba(243,232,199,.9);color:#32443a}
+.home-content{position:absolute;left:0;right:0;bottom:0;z-index:2;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;padding:0 46rpx calc(36rpx + env(safe-area-inset-bottom))}
+.hero-copy{width:100%;margin-bottom:30rpx;text-align:center}
+.hero-title{color:#2c4036;font-family:"Songti SC","STSong",serif;font-size:64rpx;font-weight:500;line-height:1.18;letter-spacing:5rpx;text-shadow:0 2rpx 15rpx rgba(244,240,219,.72)}
+.hero-description{max-width:620rpx;margin:20rpx auto 0;color:#47594f;font-size:25rpx;line-height:1.72;letter-spacing:1rpx;text-shadow:0 2rpx 12rpx rgba(245,241,221,.7)}
+.journey-actions{width:100%;display:flex;flex-direction:column;align-items:center}
+button::after{border:0}
+.journey-button{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:96rpx;margin:0;border:1rpx solid rgba(255,250,226,.64);border-radius:999rpx;background:rgba(250,244,218,.86);box-shadow:0 12rpx 38rpx rgba(52,51,35,.2),inset 0 1rpx rgba(255,255,255,.78);color:#30463a;font-family:"Songti SC","STSong",serif;font-size:31rpx;font-weight:600;letter-spacing:6rpx}
+.journey-button:active{transform:scale(.985);background:rgba(255,249,224,.94)}
+.button-arrow{position:absolute;right:38rpx;top:21rpx;color:#657366;font-family:Arial,sans-serif;font-size:48rpx;font-weight:300;line-height:1}
+.history-button{height:68rpx;margin:7rpx 0 0;background:transparent;color:#536159;font-size:23rpx;letter-spacing:2rpx}
+.journey-meta{margin-top:1rpx;color:#68746c;font-size:20rpx;letter-spacing:2rpx}
+.gentle-note{margin-top:16rpx;color:#7b837d;font-size:18rpx;letter-spacing:1rpx}
+.home-state{width:100%;min-height:168rpx;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18rpx;color:#56675e;font-size:24rpx}
+.error-state{color:#805c54}
+.retry-button{height:82rpx;font-size:27rpx}
+.moon-loader{width:36rpx;height:36rpx;border:4rpx solid rgba(54,77,65,.14);border-top-color:#536b5c;border-radius:50%;animation:turn .8s linear infinite}
+@keyframes turn{to{transform:rotate(360deg)}}

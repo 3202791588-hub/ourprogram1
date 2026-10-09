@@ -1,0 +1,36 @@
+<view class="detail-page">
+  <image class="detail-scene" src="/assets/home/tree-gateway.jpg" mode="aspectFill" />
+  <view class="detail-shade"></view>
+
+  <view class="detail-nav" style="padding-top:{{navTop}}px">
+    <view class="back-button" bindtap="back" aria-label="返回">‹</view>
+    <view class="nav-title">启程前</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="detail-state">
+    <view class="moon-loader"></view>
+    <text>正在铺开这段旅程…</text>
+  </view>
+
+  <view wx:elif="{{error}}" class="detail-state error-state">
+    <text>{{error}}</text>
+    <button class="journey-button compact" bindtap="load">重新连接</button>
+  </view>
+
+  <view wx:else class="detail-content">
+    <view class="detail-kicker">一场关于靠近与回应的旅程</view>
+    <view class="detail-title">{{test.name}}</view>
+    <view class="detail-description">{{test.description}}</view>
+
+    <view class="journey-facts">
+      <view class="fact"><text class="fact-value">{{test.current_version.question_count}}</text><text class="fact-label">个相处瞬间</text></view>
+      <view class="fact-divider"></view>
+      <view class="fact"><text class="fact-value">约 4</text><text class="fact-label">分钟</text></view>
+      <view class="fact-divider"></view>
+      <view class="fact"><text class="fact-value">没有</text><text class="fact-label">标准答案</text></view>
+    </view>
+
+    <button class="journey-button" bindtap="start"><text>开始这段旅程</text><text class="button-arrow">›</text></button>
+    <view class="detail-note">跟随第一反应选择，可以随时暂停再继续</view>
+  </view>
+</view>

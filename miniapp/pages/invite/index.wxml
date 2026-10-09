@@ -1,0 +1,1 @@
+<view class="page"><view wx:if="{{loading}}" class="loading">读取邀请…</view><view wx:elif="{{error}}" class="error">{{error}}<button class="btn" bindtap="load">重试</button></view><view wx:else class="card"><view class="title">{{invite.creator_nickname}} 邀请你一起测试</view><view class="subtitle">完成测试后，看看你们属于什么关系。</view><button class="btn" bindtap="accept">接受邀请并开始测试</button></view></view>

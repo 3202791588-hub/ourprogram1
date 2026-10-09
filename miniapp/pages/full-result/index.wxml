@@ -1,0 +1,39 @@
+<view class="journal-page">
+  <view class="sky-glow"></view><view class="moon"></view><view class="star star-one">✦</view><view class="star star-two">·</view>
+  <view class="journal-nav" style="padding-top:{{navTop}}px"><view class="back" bindtap="back">‹</view><view>月森手记</view><view class="nav-dot">✦</view></view>
+
+  <view wx:if="{{loading}}" class="journal-state"><view class="small-moon"></view><text>正在翻开手记…</text></view>
+  <view wx:elif="{{error}}" class="journal-state"><text>{{error}}</text><button class="unlock-button" bindtap="load">重新加载</button></view>
+
+  <view wx:elif="{{locked}}" class="unlock-card">
+    <view class="lock-glyph">☾</view>
+    <view class="unlock-kicker">THE REST OF YOUR STORY</view>
+    <view class="unlock-title">月森手记还合着最后几页</view>
+    <view class="unlock-copy">展开后可以看到更完整的相处特点与温柔提醒。当前 Demo 不调用真实广告。</view>
+    <button class="unlock-button" bindtap="unlock">Demo 直接展开</button>
+    <view class="unlock-note">此处是可替换的广告 Adapter，不会提前接入正式付费能力。</view>
+  </view>
+
+  <scroll-view wx:else scroll-y class="journal-scroll" enhanced show-scrollbar="{{false}}">
+    <view class="journal-hero">
+      <view class="journal-kicker">MOON FOREST NOTES</view>
+      <view class="journal-title">{{result.name}}</view>
+      <view class="journal-summary">{{result.summary}}</view>
+    </view>
+
+    <view class="spectrum-card">
+      <view class="card-title">你的相处光谱</view>
+      <view wx:for="{{scores}}" wx:key="key" class="mini-score">
+        <view class="mini-score-head"><text>{{item.label}}</text><text>{{item.value}}</text></view>
+        <view class="mini-track"><view style="width:{{item.value}}%"></view></view>
+      </view>
+    </view>
+
+    <view wx:for="{{result.sections}}" wx:key="title" wx:for-index="sectionIndex" class="journal-card">
+      <view class="chapter-index">0{{sectionIndex + 1}}</view>
+      <view class="chapter-copy"><view class="card-title">{{item.title}}</view><view class="card-content">{{item.content}}</view></view>
+    </view>
+
+    <view class="journal-footer"><text>☾</text><view>愿你既能看见自己的路，也能听见同行者的脚步。</view><view class="footer-note">娱乐化关系倾向探索 · 非心理诊断</view></view>
+  </scroll-view>
+</view>
